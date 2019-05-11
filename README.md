@@ -1,3 +1,4 @@
 # web-components-g3
 
-run `yarn start`
+run	`yarn install`
+	`yarn start`
