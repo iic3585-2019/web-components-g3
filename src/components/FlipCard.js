@@ -37,6 +37,7 @@ export default class FlipCard extends HTMLElement {
         */
         display: flex;
         height: 100%;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         background-image: linear-gradient(#FED7B0, #FFFFEE);
