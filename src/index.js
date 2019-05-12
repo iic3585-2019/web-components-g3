@@ -1,5 +1,6 @@
 import './components/NewsArticle.js';
 import './components/FlipCard.js';
+import './components/StarsRating.js';
 
 import topHeadlinesUrl from './services/newsAPI.js';
 import countriesData from './assets/data/countries';
@@ -17,13 +18,10 @@ async function getNews(country) {
   json.articles.forEach((article) => {
     const el = document.createElement('news-article');
     const flipCard = document.createElement('flip-card');
-    // TODO: add news stars rating at the back of the card
-    // backElement is just an example
+    const starsRating = document.createElement('stars-rating');
     const backElement = document.createElement('div');
-    const pElement = document.createElement('p');
-    pElement.innerHTML = ':-)';
-    backElement.setAttribute('style', 'display: flex; background-color: red;');
-    backElement.appendChild(pElement);
+    backElement.setAttribute('id', 'back-wrapper');
+    backElement.appendChild(starsRating);
 
     el.article = article;
     flipCard.content = {

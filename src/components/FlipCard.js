@@ -12,7 +12,6 @@ export default class FlipCard extends HTMLElement {
       }
 
       .flip-box-back {
-        background-color: #bbb;
         transform: rotateY(180deg);
         position: absolute;
         backface-visibility: hidden;
@@ -30,6 +29,17 @@ export default class FlipCard extends HTMLElement {
         z-index: -1;
         display: flex;
         backface-visibility: hidden;
+      }
+      #back-wrapper {
+        /*
+          abstracts css of back component,
+          back component actually uses this id
+        */
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        background-image: linear-gradient(#FED7B0, #FFFFEE);
       }
       </style>
       <div class="flip-box" id="container">

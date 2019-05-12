@@ -1,3 +1,5 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
 @font-face {
   font-family: NYTCheltenham;
   src: URL('../assets/fonts/nyt.ttf') format('truetype');
@@ -35,4 +37,5 @@ main {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-auto-rows: max-content;
   grid-auto-flow: row dense;
+  margin: 10px 0px;
 }
