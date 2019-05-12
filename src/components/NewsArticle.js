@@ -5,26 +5,26 @@ export default class NewsArticle extends HTMLElement {
   }
   set article(article) {
     this.root.innerHTML = `
-          <style>
-           h2 {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-          }
+      <style>
+       h2 {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+      }
 
-           a,
-           a:visited {
-            text-decoration: none;
-            color: inherit;
-          }
+       a,
+       a:visited {
+        text-decoration: none;
+        color: inherit;
+      }
 
-           img {
-            width: 100%;
-          }
-          </style>
-          <a href="${article.url}">
-            <h2>${article.title}</h2>
-            <img src="${article.urlToImage ? article.urlToImage : ''}">
-            <p>${article.description}</p>
-          </a>`;
+       img {
+        width: 100%;
+      }
+      </style>
+      <div>
+        <h2>${article.title}</h2>
+        <img src="${article.urlToImage ? article.urlToImage : ''}">
+        <p>${article.description}</p>
+      </div>`;
   }
 }
 

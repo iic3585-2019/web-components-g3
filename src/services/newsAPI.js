@@ -1,5 +1,6 @@
-const topHeadlinesUrl =
-  'https://newsapi.org/v2/top-headlines?country=jp&apiKey=' +
-  process.env.NEWS_API_KEY;
+const topHeadlinesUrl = (country) =>
+  `https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${
+    process.env.NEWS_API_KEY
+  }`;
 
 export default topHeadlinesUrl;
