@@ -6,8 +6,8 @@ export default class NewsArticle extends HTMLElement {
   set article(article) {
     this.root.innerHTML = `
       <style>
-       h2 {
-        font-family: Georgia, 'Times New Roman', Times, serif;
+      h2 {
+        font-family: NYTCheltenham;
       }
 
        a,
