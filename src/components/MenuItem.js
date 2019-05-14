@@ -6,21 +6,30 @@ template.innerHTML = `
     text-align: center;
   }
 
-  .menu {
-    display: flex;
+  ul {
+    display: none;
+  }
+
+  ul:hover {
+    display: block;
   }
 
 </style>
-<ul id="menu"></ul>
+<li id="menu-item">
+  <p id="name"></p>
+  <ul>
+  </ul>
+</li>
 `;
 
-class Navbar extends HTMLElement {
+class NavbarItem extends HTMLElement {
   constructor() {
     super();
     // Do setup stuff
     this.shadowRoot = this.attachShadow({'mode': 'open'});
     this.shadowRoot.appendChild(template.content.cloneNode);
-    this.$menu = this.shadowRoot.getElementById('menu');
+    this.$name = this.shadowRoot.getElementById('name');
+    this.$list = this.shadowRoot.querySelector('ul');
   }
 
   connectedCallback() {
@@ -39,21 +48,21 @@ class Navbar extends HTMLElement {
 
   }
 
-  render() {
-    this.$menu.innerHTML = '';
+  _render() {
     this._items.forEach((i) => {
-      this.$menu.appendChild(i);
+      const $item = document.createElement('li');
+      $item.innerHTML = i;
+      this.$list.appendChild($item);
     });
   }
 
-  // Receives an Array of Arrays containing the names of each menu item
   set items(value) {
-    value.forEach((i) => {
-      const newItem = document.createElement('nav-bar-item');
-      newItem.setAttribute('items', value);
-      this._items.push(newItem);
+    this.$name.innerHTML = value[0];
+    const items = value.slice(1);
+    items.forEach((i) => {
+      this._items.push(i);
     });
-    this.render();
+    this._render();
   }
 
   get items() {
@@ -61,4 +70,5 @@ class Navbar extends HTMLElement {
   }
 }
 
-window.customElements.define('nav-bar', Navbar);
+window.customElements.define('nav-bar-item', NavbarItem);
+
