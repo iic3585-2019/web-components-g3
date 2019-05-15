@@ -53,7 +53,7 @@ async function getNews(country) {
     backElement.appendChild(addTodoListButton);
     //  config url button
     button.setAttribute('url', article.url);
-    button.setAttribute('text', 'Link');
+    button.setAttribute('text', 'Read');
     button.setAttribute('style', 'primary');
     // config todo button
     addTodoListButton.setAttribute('style', 'default');
