@@ -2,10 +2,28 @@ import './components/NewsArticle.js';
 import './components/FlipCard.js';
 import './components/StarsRating.js';
 import './components/Button.js';
+import './components/TodoList.js';
 
 import topHeadlinesUrl from './services/newsAPI.js';
 import countriesData from './assets/data/countries';
 import './styles/index.scss';
+
+const todos = [];
+
+const populateTodos = () => {
+  const todoList = document.getElementById('todo-list');
+  const todoListElem = document.createElement('todo-list');
+  todoListElem.setAttribute('id', 'todo-list-elem');
+  todoListElem.todos = todos;
+  todoList.appendChild(todoListElem);
+};
+
+const addTodo = (item) => {
+  const todoList = document.getElementById('todo-list-elem');
+  const newItem = {text: item.title, checked: false, url: item.url};
+  todos.push(newItem);
+  todoList.todos = todos;
+};
 
 async function getNews(country) {
   const res = await fetch(topHeadlinesUrl(country));
@@ -21,13 +39,24 @@ async function getNews(country) {
     const flipCard = document.createElement('flip-card');
     const starsRating = document.createElement('stars-rating');
     const button = document.createElement('app-button');
+    const addTodoListButton = document.createElement('app-button');
     const backElement = document.createElement('div');
+    //  adding backcontent
     backElement.setAttribute('id', 'back-wrapper');
     backElement.appendChild(starsRating);
     backElement.appendChild(button);
+    backElement.appendChild(addTodoListButton);
+    //  config url button
     button.setAttribute('url', article.url);
     button.setAttribute('text', 'Link');
     button.setAttribute('style', 'primary');
+    // config todo button
+    addTodoListButton.setAttribute('style', 'default');
+    addTodoListButton.setAttribute('text', 'Add to to-read list');
+    addTodoListButton.item = article;
+    addTodoListButton.addEventListener('click', () => {
+      addTodo(addTodoListButton.item);
+    });
 
     el.article = article;
     flipCard.content = {
@@ -54,6 +83,7 @@ async function populateCountriesSelect() {
 
 window.addEventListener('load', () => {
   populateCountriesSelect();
+  populateTodos();
 });
 
 if (module.hot) {

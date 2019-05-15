@@ -19,7 +19,7 @@ template.innerHTML = `
 
 export default class Button extends HTMLElement {
   static get observedAttributes() {
-    return ['onClick', 'text', 'style', 'url'];
+    return ['onClick', 'text', 'style', 'url', 'item'];
   }
 
   constructor() {
@@ -60,6 +60,8 @@ export default class Button extends HTMLElement {
           this.buttonContent.classList.add('btn-primary');
           break;
         default:
+          this.buttonContent.classList.add('btn-default');
+          break;
       }
     }
   }
@@ -75,9 +77,20 @@ export default class Button extends HTMLElement {
       case 'style':
         this._style = newValue;
         break;
+      case 'item':
+        this._item = newValue;
+        break;
       default:
         break;
     }
+  }
+
+  get item() {
+    return this._item;
+  }
+
+  set item(value) {
+    this._item = value;
   }
 }
 
