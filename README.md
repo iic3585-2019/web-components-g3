@@ -22,7 +22,11 @@ It's a container for two contents, **front** and **back**. Which you set each in
 
 ###### News Article
 
+To use it, set the instance.article
+
 ###### Stars Rating
+
+Stars Rating can call a custom function when a star is pressed. This function has to be set to **instance.onPress**
 
 #### Not-so-simple
 
