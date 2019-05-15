@@ -57,6 +57,29 @@ export default class StarsRating extends HTMLElement {
       <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
     </fieldset>
     `;
+
+    // inputs config
+    const simulateClick = (value) => {
+      if (this._pressClick) {
+        this._pressClick(value);
+      } else {
+        alert('no function');
+      }
+    };
+
+    const inputs = this.root.querySelectorAll('input');
+    inputs.forEach((input) => {
+      const inputValue = input.getAttribute('value');
+      input.addEventListener('click', () => simulateClick(inputValue));
+    });
+  }
+
+  set onPress(f) {
+    this._pressClick = f;
+  }
+
+  get onPress() {
+    return this._pressClick;
   }
 }
 

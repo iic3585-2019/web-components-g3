@@ -38,6 +38,11 @@ async function getNews(country) {
     const el = document.createElement('news-article');
     const flipCard = document.createElement('flip-card');
     const starsRating = document.createElement('stars-rating');
+    //  StarsRating config
+    starsRating.onPress = (val) => {
+      alert(`${val} clicked`);
+    };
+
     const button = document.createElement('app-button');
     const addTodoListButton = document.createElement('app-button');
     const backElement = document.createElement('div');
